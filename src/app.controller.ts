@@ -27,8 +27,8 @@ export class AppController {
 
   @UsePipes(new ValidationPipe())
   @Post('create')
-  create(@Body() dto: CreateDto) {
-    console.log('post');
-    return dto;
+  async create(@Body() dto: CreateDto) {
+    const res = await this.appService.save(dto);
+    return res;
   }
 }
